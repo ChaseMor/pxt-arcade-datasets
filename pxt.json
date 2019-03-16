@@ -7,11 +7,12 @@
     },
     "files": [
         "README.md",
-        "main.ts"
+        "main.ts",
+        "lemonade.ts",
+        "studying.ts"
     ],
     "testFiles": [
         "test.ts"
     ],
-    "public": false,
-    "additionalFilePaths": []
+    "public": false
 }
