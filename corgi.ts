@@ -37,7 +37,7 @@ namespace corgidata {
     const HEADER_LENGTH = 1 * BYTES_PER_NUMBER;
     export const NUMBER_OF_WEEKS: number = DATA.getNumber(NumberFormat.Float32LE, 0);
 
-    export function getFlowerPopulation(week: number) {
+    export function getBerryPopulation(week: number) {
         const offset: number = HEADER_LENGTH
             + (week) * BYTES_PER_NUMBER;
         return Math.roundWithPrecision(DATA.getNumber(NumberFormat.Float32LE, offset), 3);
