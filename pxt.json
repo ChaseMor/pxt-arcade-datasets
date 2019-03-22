@@ -9,10 +9,12 @@
         "README.md",
         "main.ts",
         "lemonade.ts",
-        "studying.ts"
+        "studying.ts",
+        "corgi.ts"
     ],
     "testFiles": [
         "test.ts"
     ],
-    "public": false
+    "public": false,
+    "installedVersion": "workspace:a3a91690-cc11-4ad9-67a7-34bb6d2ebd87"
 }
