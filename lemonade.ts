@@ -17,12 +17,18 @@ namespace lemonadedata {
     export const NUMBER_OF_DAYS: number = DATA.getNumber(NumberFormat.Int16LE, 0);
 
     export function getTemperature(day: number) {
+        if (day < 0 || day >= NUMBER_OF_DAYS) {
+            return undefined;
+        }
         const offset: number = HEADER_LENGTH
             + (day) * BYTES_PER_NUMBER;
         return DATA.getNumber(NumberFormat.Int16LE, offset);
     }
 
     export function getSales(day: number) {
+        if (day < 0 || day >= NUMBER_OF_DAYS) {
+            return undefined;
+        }
         const offset: number = HEADER_LENGTH
             + (NUMBER_OF_DAYS * BYTES_PER_NUMBER)
             + (day) * BYTES_PER_NUMBER;

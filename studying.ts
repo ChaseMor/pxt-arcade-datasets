@@ -69,12 +69,20 @@ namespace testdata {
     export const NUMBER_OF_TESTS: number = DATA.getNumber(NumberFormat.Float32LE, BYTES_PER_NUMBER);
 
     export function getHoursStudied(student: number, test: number) {
+        if (student < 0 || student >= NUMBER_OF_STUDENTS
+            || test < 0 || test >= NUMBER_OF_TESTS) {
+            return undefined;
+        }
         const offset: number = HEADER_LENGTH
             + (student * NUMBER_OF_TESTS + test) * BYTES_PER_NUMBER;
         return DATA.getNumber(NumberFormat.Float32LE, offset);
     }
 
     export function getTestResults(student: number, test: number) {
+        if (student < 0 || student >= NUMBER_OF_STUDENTS
+            || test < 0 || test >= NUMBER_OF_TESTS) {
+            return undefined;
+        }
         const offset: number = HEADER_LENGTH
             + (NUMBER_OF_STUDENTS * NUMBER_OF_TESTS * BYTES_PER_NUMBER)
             + (student * NUMBER_OF_TESTS + test) * BYTES_PER_NUMBER;

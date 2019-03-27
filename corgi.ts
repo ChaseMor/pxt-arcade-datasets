@@ -38,12 +38,18 @@ namespace corgidata {
     export const NUMBER_OF_WEEKS: number = DATA.getNumber(NumberFormat.Float32LE, 0);
 
     export function getBerryPopulation(week: number) {
+        if (week < 0 || week >= NUMBER_OF_WEEKS) {
+            return undefined;
+        }
         const offset: number = HEADER_LENGTH
             + (week) * BYTES_PER_NUMBER;
         return Math.roundWithPrecision(DATA.getNumber(NumberFormat.Float32LE, offset), 3);
     }
 
     export function getCorgiPopulation(week: number) {
+        if (week < 0 || week >= NUMBER_OF_WEEKS) {
+            return undefined;
+        }
         const offset: number = HEADER_LENGTH
             + (NUMBER_OF_WEEKS * BYTES_PER_NUMBER)
             + (week) * BYTES_PER_NUMBER;
