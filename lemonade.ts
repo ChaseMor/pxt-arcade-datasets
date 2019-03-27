@@ -14,9 +14,20 @@ namespace lemonadedata {
 
     const BYTES_PER_NUMBER: number = 2;
     const HEADER_LENGTH = 1 * BYTES_PER_NUMBER;
+
+    /**
+     * The total number of days/samples collected
+     */
     export const NUMBER_OF_DAYS: number = DATA.getNumber(NumberFormat.Int16LE, 0);
 
-    export function getTemperature(day: number) {
+    /**
+     * Gets the temperature for the day specified
+     * 
+     * @param day The day in which the temperature is requested
+     * @returns the temperature for the day specified. 
+     *  Returns undefined if the day specified is not in the data set
+     */
+    export function getTemperature(day: number): number {
         if (day < 0 || day >= NUMBER_OF_DAYS) {
             return undefined;
         }
@@ -24,7 +35,14 @@ namespace lemonadedata {
             + (day) * BYTES_PER_NUMBER;
         return DATA.getNumber(NumberFormat.Int16LE, offset);
     }
-
+    
+    /**
+     * Gets the number of lemonade sales for the day specified
+     * 
+     * @param day The day in which the number of lemonade sales is requested
+     * @returns the number of lemonade sales for the day specified. 
+     *  Returns undefined if the day specified is not in the data set
+     */
     export function getSales(day: number) {
         if (day < 0 || day >= NUMBER_OF_DAYS) {
             return undefined;

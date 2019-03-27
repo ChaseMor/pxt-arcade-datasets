@@ -35,8 +35,19 @@ namespace corgidata {
 
     const BYTES_PER_NUMBER: number = 4;
     const HEADER_LENGTH = 1 * BYTES_PER_NUMBER;
+
+    /**
+     * The total number of weeks/samples collected
+     */
     export const NUMBER_OF_WEEKS: number = DATA.getNumber(NumberFormat.Float32LE, 0);
 
+    /**
+     * Gets the berry population for the week specified
+     * 
+     * @param week The week in which the berry population is requested
+     * @returns the berry population  for the week specified. 
+     *  Returns undefined if the week specified is not in the data set
+     */
     export function getBerryPopulation(week: number) {
         if (week < 0 || week >= NUMBER_OF_WEEKS) {
             return undefined;
@@ -46,6 +57,13 @@ namespace corgidata {
         return Math.roundWithPrecision(DATA.getNumber(NumberFormat.Float32LE, offset), 3);
     }
 
+    /**
+     * Gets the corgi population for the week specified
+     * 
+     * @param week The week in which the corgi population is requested
+     * @returns the corgi population  for the week specified. 
+     *  Returns undefined if the week specified is not in the data set
+     */
     export function getCorgiPopulation(week: number) {
         if (week < 0 || week >= NUMBER_OF_WEEKS) {
             return undefined;

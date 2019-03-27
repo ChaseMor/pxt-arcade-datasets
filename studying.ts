@@ -65,9 +65,26 @@ namespace testdata {
 
     const BYTES_PER_NUMBER: number = 4;
     const HEADER_LENGTH = 2 * BYTES_PER_NUMBER;
+    
+    /**
+     * The total number of students involved in the data set
+     */
     export const NUMBER_OF_STUDENTS: number = DATA.getNumber(NumberFormat.Float32LE, 0);
+
+    /**
+     * The total number of tests the students took
+     */
     export const NUMBER_OF_TESTS: number = DATA.getNumber(NumberFormat.Float32LE, BYTES_PER_NUMBER);
 
+
+    /**
+     * Gets the amount of hours the specified student studied for the specified test
+     * 
+     * @param student The student who studied the hours
+     * @param test The test the student studied for
+     * @returns the amount of hours the specified student studied for the specified test.
+     *  Returns undefined if the test or student specified is not in the data set
+     */
     export function getHoursStudied(student: number, test: number) {
         if (student < 0 || student >= NUMBER_OF_STUDENTS
             || test < 0 || test >= NUMBER_OF_TESTS) {
@@ -78,6 +95,15 @@ namespace testdata {
         return DATA.getNumber(NumberFormat.Float32LE, offset);
     }
 
+    /**
+     * Gets the results of how well the specific student performed on the specific test
+     * 
+     * @param student The student who took the test
+     * @param test The test the student took
+     * @returns the results of how well the specific student performed on the specific test.
+     *  The value is returned as a percentage ranging from ``0`` to ``100``.
+     *  Returns undefined if the test or student specified is not in the data set
+     */
     export function getTestResults(student: number, test: number) {
         if (student < 0 || student >= NUMBER_OF_STUDENTS
             || test < 0 || test >= NUMBER_OF_TESTS) {
