@@ -16,7 +16,7 @@ namespace lemonadedata {
     const HEADER_LENGTH = 1 * BYTES_PER_NUMBER;
     export const NUMBER_OF_DAYS: number = DATA.getNumber(NumberFormat.Int16LE, 0);
 
-    export function getTempature(day: number) {
+    export function getTemperature(day: number) {
         const offset: number = HEADER_LENGTH
             + (day) * BYTES_PER_NUMBER;
         return DATA.getNumber(NumberFormat.Int16LE, offset);
